@@ -196,3 +196,50 @@
     \smash{\colorbox{red!50}{\color{black}\normalfont\normalsize #1}}%
   }{}
 }
+
+%%% Misc custom commands and environments
+
+\newcommand{\activityprofile}[8][]{%
+  \extrarowheight=\aboverulesep%
+  \addtolength{\extrarowheight}{\belowrulesep}
+  \aboverulesep=0pt
+  \belowrulesep=0pt
+  \begin{longtable}{m{13.15cm}w{c}{3cm}}
+    \toprule
+    \rowcolor{lightgray}
+    \textbf{Activities} (Distribute 100 points on these 7 items) & \\
+    \midrule
+    \textbf{Contribution to innovative teaching based on research}
+      (University Research Schools - EUR, structuring training through
+      research - SFRI, etc.)
+    & #2 \\
+    \midrule
+    \textbf{Research administration} (responsibility for steering research
+      (VP, Institute Management, Scientific Director, etc.), participation in
+      evaluation systems (CNU, CoNRS, CSS, etc.), responsibility for IdEx,
+      project management (ANR, Horizon Europe, ERC, CPER State-Region
+      contract, France 2030, etc.), editorial responsibilities in national or
+      international journals or collections.
+    & #3 \\
+    \midrule
+    \textbf{Research dissemination} (sharing knowledge with the general
+      public, scientific outreach, interface between science/society)
+    & #4 \\
+    \midrule
+    \textbf{Research and research supervision} (involvement in supervision
+      at doctoral level and post-doctoral level)
+    & #5 \\
+    \midrule
+    \textbf{Technical expertise} (for national and regional public
+      authorities, businesses, international bodies (UN, FAO, WHO, etc.)
+    & #6 \\
+    \midrule
+    \textbf{Valorisation, transfer, innovation}
+    & #7 \\
+    \midrule
+    \textbf{Other activities.}
+    #1
+    & #8 \\
+    \bottomrule
+  \end{longtable}
+}
