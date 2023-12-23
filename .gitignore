@@ -1,0 +1,9 @@
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+hceres2024-*.pdf
+*.run.xml
+*.toc

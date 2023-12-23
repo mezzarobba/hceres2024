@@ -1,0 +1,49 @@
+\documentclass{hceres}
+
+\addbibresource{assets/dummy.bib}
+\setdefaultlanguage{english}
+
+\begin{document}
+
+\title{Laboratoire}
+\date{\today}
+
+\IfSuffixT[main]{%
+  \maketitle{}
+}
+
+% \tableofcontents
+
+\IfSuffixT[main,unit]{%
+  \begin{refsegment}
+  \input{unit/intro.tex}
+  \end{refsegment}
+}
+
+\section{Self-assessment document}
+
+\IfSuffixT[main,unit]{%
+  \team{Self-evaluation of the unit}
+
+  \begin{refsegment}
+  \input{unit/unit.tex}
+  \end{refsegment}
+}
+
+\IfSuffixT[main,example]{%
+  \team{Team self-evaluation (in the case of multi-team units)}
+
+  \begin{refsegment}
+  \input{example/example.tex}
+  \end{refsegment}
+}
+
+\IfSuffixT[main,unit]{%
+  \begin{refsegment}
+  \input{unit/trajectory.tex}
+  \end{refsegment}
+}
+
+\printbibliography[heading=subbibliography]
+
+\end{document}

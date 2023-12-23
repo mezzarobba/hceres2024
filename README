@@ -1,0 +1,41 @@
+2024 HCÉRES Research unit self-assessment document template in LaTeX
+
+
+This is a LaTeX template based on [1] for producing research unit
+self-assessment documents in view of the 2024 HCÉRES evaluation campaign.
+This template also offers a few facilities to help collaborate on evaluation
+reports for multi-team units.
+
+[1] https://www.hceres.fr/sites/default/files/DAE_vague-E/recherche/trame_dae_ur_en_19oct.docx
+
+
+LICENSE
+
+See [2] for the terms applicable to the reproduction of the contents extracted
+from the HCÉRES template [1]. To the extent possible under law, the author of
+the adaptation has waived all copyright and related or neighboring rights to the
+contents of this repository.
+
+[2] https://www.hceres.fr/fr/mentions-legales
+
+
+BUILDING THE REPORT
+
+You need a recent version of TeXlive with lualatex, biber, latexmk, and many
+common LaTeX packages (the most recent/least common one probably being
+jobname-suffix).
+
+- The make command with no arguments builds the full report.
+
+- It is possible to build only a subset of the full document. For instance,
+
+    make example/hceres2024-example.pdf
+
+  builds the section dedicated to the "example" team. Use tab completion to
+  discover the exact target names. Edit hceres2024-main.tex and the Makefile to
+  define new independently buildable subsets.
+
+  Besides the shared files found at top level and in assets/, each subreport
+  should typically depend only on the contents of the corresponding directory.
+
+- make all builds all standard subreports.
