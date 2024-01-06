@@ -1,13 +1,30 @@
 hceres2024-main.pdf:
 
-all = hceres2024-main.pdf \
-      unit/hceres2024-unit.pdf \
-      example/hceres2024-example.pdf
+pdf := hceres2024-main.pdf \
+       unit/hceres2024-unit.pdf \
+       example/hceres2024-example.pdf
+
+all := $(pdf) index.html
 
 all: $(all)
 
-$(all): %.pdf: Makefile hceres.cls assets/* hceres2024-main.tex \
-               $(shell find -not -name 'hceres2024-*.pdf' $(dir $@))
-	latexmk --lualatex --jobname=$(basename $@) hceres2024-main.tex
+%.clean: FORCE
+	latexmk -C --jobname=$(basename $@)
+	rm index.html
 
-.PHONY: all
+clean: $(pdf:.pdf=.clean)
+
+index.html: Makefile tools/index.py $(pdf)
+	> $@ python3 tools/index.py $(pdf)
+
+FORCE:
+
+.SECONDEXPANSION:
+$(pdf): %.pdf: Makefile hceres.cls assets/* hceres2024-main.tex \
+               $$(shell git ls-files --exclude-standard -co $$(dir $$@))
+	@echo Dependencies: $^
+	@echo Rebuilding $@ because of changes in $?
+	latexmk --lualatex --jobname=$(basename $@) hceres2024-main.tex
+	touch $@ # update timestamp in case latexmk found nothing to do
+
+.PHONY: all clean FORCE
